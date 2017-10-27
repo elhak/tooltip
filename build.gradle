@@ -1,0 +1,36 @@
+group = "me.piruin"
+description = 'Android Library for easy create Tooltips with some action or just as decoration.'
+version = {->
+  def stdout = new ByteArrayOutputStream()
+  exec {
+    commandLine 'git', 'describe', '--tags'
+    standardOutput = stdout
+  }
+  return stdout.toString().trim()
+}.call()
+
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:2.3.3'
+  }
+}
+
+allprojects {
+  repositories {
+    jcenter()
+  }
+}
+
+ext {
+  JAVA_VERSION = JavaVersion.VERSION_1_7
+
+  ANDROID_MIN_SDK = 19
+  ANDROID_TARGET_SDK = 25
+  ANDROID_BUILD_TOOLS = "25.0.0"
+  ANDROID_SUPPORT_VERSION = "25.3.1"
+
+  githubRepo = 'piruin/quickaction'
+}
